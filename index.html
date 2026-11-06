@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buddy — Sistem Onboarding Mahasiswa Baru</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- ─── SIDEBAR NAVIGATION ─────────────────────────────────────────────── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+    <div class="logo-text">
+      <span class="logo-title">Buddy</span>
+      <span class="logo-sub">Onboarding System</span>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#" class="nav-item active" data-page="dashboard">
+      <i class="fas fa-home"></i><span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" data-page="chatbot">
+      <i class="fas fa-robot"></i><span>Buddy AI</span>
+      <span class="nav-badge">AI</span>
+    </a>
+    <a href="#" class="nav-item" data-page="akademik">
+      <i class="fas fa-book-open"></i><span>Info Akademik</span>
+    </a>
+    <a href="#" class="nav-item" data-page="jadwal">
+      <i class="fas fa-calendar-alt"></i><span>Jadwal & Kegiatan</span>
+    </a>
+    <a href="#" class="nav-item" data-page="organisasi">
+      <i class="fas fa-users"></i><span>Organisasi</span>
+    </a>
+    <a href="#" class="nav-item" data-page="fasilitas">
+      <i class="fas fa-building"></i><span>Fasilitas Kampus</span>
+    </a>
+    <a href="#" class="nav-item" data-page="profil">
+      <i class="fas fa-user-circle"></i><span>Profil Saya</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div class="user-avatar">MB</div>
+      <div class="user-info">
+        <span class="user-name">Mahasiswa Baru</span>
+        <span class="user-nim">2024001234</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- ─── MOBILE TOP BAR ─────────────────────────────────────────────────── -->
+<div class="topbar">
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+  <span class="topbar-title">Buddy</span>
+  <div class="topbar-actions">
+    <button class="notif-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+  </div>
+</div>
+
+<!-- ─── SIDEBAR OVERLAY ────────────────────────────────────────────────── -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ─── MAIN CONTENT ──────────────────────────────────────────────────── -->
+<main class="main-content">
+
+  <!-- ══ PAGE: DASHBOARD ══════════════════════════════════════════════ -->
+  <section class="page active" id="page-dashboard">
+
+    <!-- Hero -->
+    <div class="hero-banner">
+      <div class="hero-text">
+        <div class="hero-badge"><i class="fas fa-star"></i> Selamat Datang!</div>
+        <h1>Halo, Mahasiswa Baru! 👋</h1>
+        <p>Selamat bergabung di kampus kami. Buddy siap memandu kamu mengenal lingkungan kampus, kegiatan akademik, dan semua yang kamu butuhkan untuk memulai perjalanan kuliah dengan percaya diri.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="navigateTo('chatbot')"><i class="fas fa-robot"></i> Tanya Buddy AI</button>
+          <button class="btn-outline" onclick="navigateTo('akademik')"><i class="fas fa-book-open"></i> Info Akademik</button>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <div class="hero-card-float card-1"><i class="fas fa-graduation-cap"></i><span>Akademik</span></div>
+        <div class="hero-card-float card-2"><i class="fas fa-calendar-check"></i><span>Jadwal</span></div>
+        <div class="hero-card-float card-3"><i class="fas fa-users"></i><span>Komunitas</span></div>
+        <div class="hero-mascot">
+          <div class="mascot-circle">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="mascot-pulse"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-book"></i></div>
+        <div class="stat-info"><span class="stat-num">24</span><span class="stat-label">Mata Kuliah</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><i class="fas fa-users"></i></div>
+        <div class="stat-info"><span class="stat-num">15+</span><span class="stat-label">Organisasi</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-building"></i></div>
+        <div class="stat-info"><span class="stat-num">8</span><span class="stat-label">Gedung Kampus</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange"><i class="fas fa-calendar-alt"></i></div>
+        <div class="stat-info"><span class="stat-num">5</span><span class="stat-label">Kegiatan Minggu Ini</span></div>
+      </div>
+    </div>
+
+    <!-- Quick Access -->
+    <h2 class="section-title">Akses Cepat</h2>
+    <div class="quick-grid">
+      <div class="quick-card" onclick="navigateTo('chatbot')">
+        <div class="quick-icon ai"><i class="fas fa-robot"></i></div>
+        <h3>Buddy AI</h3>
+        <p>Tanya apa saja seputar kampus kepada asisten AI kami</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="quick-card" onclick="navigateTo('akademik')">
+        <div class="quick-icon book"><i class="fas fa-book-open"></i></div>
+        <h3>Info Akademik</h3>
+        <p>Kurikulum, sistem SKS, cara daftar mata kuliah, dan KRS</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="quick-card" onclick="navigateTo('jadwal')">
+        <div class="quick-icon cal"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Jadwal Kegiatan</h3>
+        <p>Jadwal PKKMB, orientasi, dan kegiatan kampus lainnya</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="quick-card" onclick="navigateTo('organisasi')">
+        <div class="quick-icon org"><i class="fas fa-users"></i></div>
+        <h3>Organisasi</h3>
+        <p>Temukan UKM dan organisasi yang sesuai minatmu</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="quick-card" onclick="navigateTo('fasilitas')">
+        <div class="quick-icon fac"><i class="fas fa-building"></i></div>
+        <h3>Fasilitas Kampus</h3>
+        <p>Perpustakaan, laboratorium, kantin, dan fasilitas lainnya</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+      <div class="quick-card" onclick="navigateTo('profil')">
+        <div class="quick-icon prof"><i class="fas fa-user-circle"></i></div>
+        <h3>Profil Saya</h3>
+        <p>Lengkapi data diri dan progres onboarding kamu</p>
+        <span class="quick-arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+    </div>
+
+    <!-- Tips -->
+    <h2 class="section-title">Tips untuk Mahasiswa Baru</h2>
+    <div class="tips-row">
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <h4>Kenali Lingkungan Kampus</h4>
+        <p>Jelajahi setiap sudut kampus, dari gedung kuliah, perpustakaan, hingga kantin. Semakin cepat kamu mengenal kampus, semakin nyaman kamu.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <h4>Aktif di Organisasi</h4>
+        <p>Bergabung dengan UKM atau Himpunan Mahasiswa untuk memperluas jaringan, mengembangkan soft skill, dan membuat pengalaman kuliah lebih berkesan.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <h4>Manajemen Waktu</h4>
+        <p>Buat jadwal belajar yang teratur, catat semua deadline tugas, dan sisakan waktu untuk istirahat agar tetap produktif sepanjang semester.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ PAGE: CHATBOT ═════════════════════════════════════════════════ -->
+  <section class="page" id="page-chatbot">
+    <div class="page-header">
+      <h1><i class="fas fa-robot"></i> Buddy AI Assistant</h1>
+      <p>Tanya apa saja seputar kehidupan kampus. Buddy siap membantu 24/7!</p>
+    </div>
+
+    <div class="chat-container">
+      <!-- Chat Window -->
+      <div class="chat-window" id="chatWindow">
+        <!-- Greeter -->
+        <div class="chat-msg bot">
+          <div class="msg-avatar"><i class="fas fa-robot"></i></div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Halo! 👋 Aku <strong>Buddy</strong>, asisten AI yang siap membantu kamu beradaptasi di kampus. Aku bisa menjawab pertanyaan tentang:<br/><br/>
+              🎓 <strong>Akademik</strong> — SKS, KRS, nilai, kurikulum<br/>
+              📅 <strong>Jadwal</strong> — PKKMB, orientasi, kegiatan<br/>
+              🏛️ <strong>Kampus</strong> — gedung, fasilitas, lokasi<br/>
+              👥 <strong>Organisasi</strong> — UKM, Himpunan, komunitas<br/>
+              📋 <strong>Administrasi</strong> — KTM, surat, berkas<br/><br/>
+              Silakan ketik pertanyaanmu di bawah! 😊
+            </div>
+            <span class="msg-time">Sekarang</span>
+          </div>
+        </div>
+
+        <!-- Quick Suggestions -->
+        <div class="chat-suggestions" id="chatSuggestions">
+          <button class="suggestion-chip" onclick="sendSuggestion(this)">Apa itu SKS?</button>
+          <button class="suggestion-chip" onclick="sendSuggestion(this)">Cara daftar UKM?</button>
+          <button class="suggestion-chip" onclick="sendSuggestion(this)">Kapan PKKMB?</button>
+          <button class="suggestion-chip" onclick="sendSuggestion(this)">Di mana perpustakaan?</button>
+          <button class="suggestion-chip" onclick="sendSuggestion(this)">Cara mengurus KTM?</button>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator" style="display:none">
+        <div class="msg-avatar small"><i class="fas fa-robot"></i></div>
+        <div class="typing-dots"><span></span><span></span><span></span></div>
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input-bar">
+        <button class="attach-btn" title="Topik Cepat" onclick="toggleTopics()"><i class="fas fa-th"></i></button>
+        <input type="text" id="chatInput" placeholder="Ketik pertanyaanmu di sini..." autocomplete="off" />
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
+
+      <!-- Topic Chips (Hidden) -->
+      <div class="topic-panel" id="topicPanel" style="display:none">
+        <button class="topic-chip" onclick="sendSuggestion(this)">📚 Tentang KRS</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">🏛️ Fasilitas Kampus</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">💻 E-Learning</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">🎓 Cara wisuda</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">💰 Beasiswa</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">📍 Lokasi dekanat</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">🍽️ Kantin kampus</button>
+        <button class="topic-chip" onclick="sendSuggestion(this)">🚌 Transportasi kampus</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE: AKADEMIK ════════════════════════════════════════════════ -->
+  <section class="page" id="page-akademik">
+    <div class="page-header">
+      <h1><i class="fas fa-book-open"></i> Informasi Akademik</h1>
+      <p>Semua yang perlu kamu tahu tentang sistem perkuliahan</p>
+    </div>
+
+    <div class="accordion-list">
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span><i class="fas fa-graduation-cap"></i> Sistem SKS (Satuan Kredit Semester)</span>
+          <i class="fas fa-chevron-down acc-icon"></i>
+        </button>
+        <div class="accordion-body">
+          <p>SKS adalah satuan beban belajar yang digunakan dalam sistem pendidikan tinggi Indonesia.</p>
+          <ul>
+            <li>1 SKS setara dengan 1 jam kuliah, 1 jam tugas terstruktur, dan 1 jam belajar mandiri per minggu</li>
+            <li>Beban normal per semester: <strong>18–24 SKS</strong></li>
+            <li>Mahasiswa baru (semester 1–2): maksimal <strong>24 SKS</strong></li>
+            <li>Semester selanjutnya bergantung pada <strong>Indeks Prestasi (IP)</strong> semester sebelumnya</li>
+            <li>Total SKS untuk lulus S1: <strong>144–160 SKS</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span><i class="fas fa-list-check"></i> Kartu Rencana Studi (KRS)</span>
+          <i class="fas fa-chevron-down acc-icon"></i>
+        </button>
+        <div class="accordion-body">
+          <p>KRS adalah daftar mata kuliah yang kamu ambil dalam satu semester.</p>
+          <ul>
+            <li>KRS diisi <strong>setiap awal semester</strong> melalui portal akademik online</li>
+            <li>Konsultasikan pilihan mata kuliah dengan <strong>Dosen Pembimbing Akademik (PA)</strong></li>
+            <li>Pastikan memenuhi <strong>prasyarat</strong> mata kuliah yang dipilih</li>
+            <li>Periode pengisian KRS: biasanya 2 minggu sebelum semester dimulai</li>
+            <li>KRS yang sudah dikunci dosen PA tidak bisa diubah</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span><i class="fas fa-star-half-alt"></i> Sistem Penilaian</span>
+          <i class="fas fa-chevron-down acc-icon"></i>
+        </button>
+        <div class="accordion-body">
+          <div class="grade-table">
+            <table>
+              <thead><tr><th>Nilai Angka</th><th>Nilai Huruf</th><th>Bobot</th><th>Predikat</th></tr></thead>
+              <tbody>
+                <tr><td>85–100</td><td>A</td><td>4.0</td><td>Sangat Baik</td></tr>
+                <tr><td>80–84</td><td>A-</td><td>3.7</td><td>Sangat Baik</td></tr>
+                <tr><td>75–79</td><td>B+</td><td>3.3</td><td>Baik</td></tr>
+                <tr><td>70–74</td><td>B</td><td>3.0</td><td>Baik</td></tr>
+                <tr><td>65–69</td><td>B-</td><td>2.7</td><td>Cukup Baik</td></tr>
+                <tr><td>60–64</td><td>C+</td><td>2.3</td><td>Cukup</td></tr>
+                <tr><td>55–59</td><td>C</td><td>2.0</td><td>Cukup</td></tr>
+                <tr><td>&lt; 55</td><td>D/E</td><td>1.0/0</td><td>Kurang</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>IP dihitung dari rata-rata tertimbang bobot nilai dikali jumlah SKS masing-masing mata kuliah.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span><i class="fas fa-laptop"></i> E-Learning & Portal Akademik</span>
+          <i class="fas fa-chevron-down acc-icon"></i>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>Portal Akademik:</strong> Akses nilai, KRS, dan transkrip di <em>akademik.kampus.ac.id</em></li>
+            <li><strong>E-Learning (LMS):</strong> Unduh materi kuliah dan kumpul tugas di <em>elearning.kampus.ac.id</em></li>
+            <li><strong>Email Kampus:</strong> Aktifkan email institusi format <em>nim@mahasiswa.kampus.ac.id</em></li>
+            <li><strong>WiFi Kampus:</strong> Gunakan SSID <em>KampusNet</em> dengan login NIM dan password awal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <span><i class="fas fa-award"></i> Beasiswa & Bantuan Keuangan</span>
+          <i class="fas fa-chevron-down acc-icon"></i>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li><strong>KIP Kuliah:</strong> Beasiswa pemerintah untuk mahasiswa kurang mampu berprestasi</li>
+            <li><strong>Beasiswa Prestasi:</strong> Untuk mahasiswa dengan IPK ≥ 3.50</li>
+            <li><strong>Beasiswa Internal:</strong> Diberikan oleh universitas, cek portal beasiswa kampus</li>
+            <li><strong>UKT Keringanan:</strong> Ajukan ke Biro Keuangan dengan dokumen pendukung</li>
+            <li>Pantau terus pengumuman beasiswa di papan info dan portal akademik</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE: JADWAL ══════════════════════════════════════════════════ -->
+  <section class="page" id="page-jadwal">
+    <div class="page-header">
+      <h1><i class="fas fa-calendar-alt"></i> Jadwal & Kegiatan</h1>
+      <p>Kalender kegiatan penting untuk mahasiswa baru</p>
+    </div>
+
+    <!-- Calendar Tab -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this, 'tab-upcoming')">Akan Datang</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-pkkmb')">PKKMB</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-akademik')">Kalender Akademik</button>
+    </div>
+
+    <div class="tab-content active" id="tab-upcoming">
+      <div class="event-list">
+        <div class="event-card urgent">
+          <div class="event-date"><span class="ev-day">10</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Pengumpulan Berkas Registrasi</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Gedung Rektorat lt. 1 &nbsp;|&nbsp; <i class="fas fa-clock"></i> 08:00–15:00</p>
+            <span class="event-tag red">Wajib</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">15</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Pembukaan PKKMB Universitas</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Auditorium Utama &nbsp;|&nbsp; <i class="fas fa-clock"></i> 07:30</p>
+            <span class="event-tag blue">PKKMB</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">16</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Pengenalan Fakultas</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Gedung Dekanat Masing-masing &nbsp;|&nbsp; <i class="fas fa-clock"></i> 08:00</p>
+            <span class="event-tag blue">PKKMB</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">18</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Orientasi Pengenalan Program Studi</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Aula Prodi Masing-masing &nbsp;|&nbsp; <i class="fas fa-clock"></i> 09:00</p>
+            <span class="event-tag blue">PKKMB</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">20</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Pengisian KRS Semester Ganjil</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Online — Portal Akademik &nbsp;|&nbsp; <i class="fas fa-clock"></i> s/d 25 Nov</p>
+            <span class="event-tag green">Akademik</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">25</span><span class="ev-month">Nov</span></div>
+          <div class="event-info">
+            <h4>Pertemuan Perdana Dosen PA</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Ruang Dosen Prodi &nbsp;|&nbsp; <i class="fas fa-clock"></i> 10:00</p>
+            <span class="event-tag green">Akademik</span>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><span class="ev-day">1</span><span class="ev-month">Des</span></div>
+          <div class="event-info">
+            <h4>Mulai Perkuliahan Semester Ganjil</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Ruang Kuliah &nbsp;|&nbsp; <i class="fas fa-clock"></i> Sesuai Jadwal</p>
+            <span class="event-tag purple">Perkuliahan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-pkkmb">
+      <div class="pkkmb-timeline">
+        <div class="timeline-item">
+          <div class="tl-dot blue"></div>
+          <div class="tl-content">
+            <h4>Hari 1 — Pembukaan & Pengenalan Universitas</h4>
+            <p>Upacara pembukaan, sambutan Rektor, pengenalan sejarah & visi misi universitas, pengenalan struktur organisasi kampus.</p>
+            <span class="tl-date">15 November 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot purple"></div>
+          <div class="tl-content">
+            <h4>Hari 2 — Pengenalan Akademik</h4>
+            <p>Sistem perkuliahan, tata tertib, kurikulum, pengenalan dosen, kunjungan laboratorium dan fasilitas kampus.</p>
+            <span class="tl-date">16 November 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot green"></div>
+          <div class="tl-content">
+            <h4>Hari 3 — Kehidupan Kampus & Soft Skill</h4>
+            <p>Pengenalan organisasi mahasiswa, UKM, seminar motivasi, games keakraban, dan malam kebudayaan.</p>
+            <span class="tl-date">17 November 2024</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-dot orange"></div>
+          <div class="tl-content">
+            <h4>Hari 4 — Penutupan & Janji Mahasiswa</h4>
+            <p>Refleksi PKKMB, ikrar mahasiswa baru, penyerahan sertifikat, foto bersama, dan penutupan resmi.</p>
+            <span class="tl-date">18 November 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-akademik">
+      <div class="cal-table-wrap">
+        <table class="cal-table">
+          <thead><tr><th>Kegiatan</th><th>Tanggal</th><th>Keterangan</th></tr></thead>
+          <tbody>
+            <tr><td>PKKMB</td><td>15–18 Nov 2024</td><td>Wajib dihadiri seluruh mahasiswa baru</td></tr>
+            <tr><td>Pengisian KRS</td><td>20–25 Nov 2024</td><td>Via portal akademik online</td></tr>
+            <tr><td>Awal Semester Ganjil</td><td>1 Des 2024</td><td>Mulai perkuliahan reguler</td></tr>
+            <tr><td>Ujian Tengah Semester</td><td>3–7 Feb 2025</td><td>UTS</td></tr>
+            <tr><td>Ujian Akhir Semester</td><td>7–14 Apr 2025</td><td>UAS</td></tr>
+            <tr><td>Input Nilai Dosen</td><td>s/d 21 Apr 2025</td><td>—</td></tr>
+            <tr><td>Liburan Semester</td><td>22 Apr–1 Jun 2025</td><td>—</td></tr>
+            <tr><td>Awal Semester Genap</td><td>2 Jun 2025</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE: ORGANISASI ══════════════════════════════════════════════ -->
+  <section class="page" id="page-organisasi">
+    <div class="page-header">
+      <h1><i class="fas fa-users"></i> Organisasi Mahasiswa</h1>
+      <p>Bergabunglah dan kembangkan diri bersama komunitas kampus</p>
+    </div>
+
+    <div class="search-bar-wrap">
+      <i class="fas fa-search"></i>
+      <input type="text" id="orgSearch" placeholder="Cari organisasi..." oninput="filterOrg()" />
+    </div>
+
+    <div class="org-filter-tabs">
+      <button class="filter-tab active" onclick="filterOrgCat(this, 'semua')">Semua</button>
+      <button class="filter-tab" onclick="filterOrgCat(this, 'hima')">Himpunan</button>
+      <button class="filter-tab" onclick="filterOrgCat(this, 'ukm')">UKM</button>
+      <button class="filter-tab" onclick="filterOrgCat(this, 'badan')">Badan Eksekutif</button>
+    </div>
+
+    <div class="org-grid" id="orgGrid">
+      <div class="org-card" data-cat="hima">
+        <div class="org-icon hima"><i class="fas fa-laptop-code"></i></div>
+        <h3>HIMA Informatika</h3>
+        <p>Himpunan Mahasiswa Informatika — wadah pengembangan minat di bidang teknologi informasi dan komputer.</p>
+        <div class="org-tags"><span>Akademik</span><span>Teknologi</span></div>
+      </div>
+      <div class="org-card" data-cat="hima">
+        <div class="org-icon hima"><i class="fas fa-flask"></i></div>
+        <h3>HIMA Teknik Kimia</h3>
+        <p>Himpunan Mahasiswa Teknik Kimia — kegiatan akademik, riset, dan pengabdian masyarakat bidang kimia.</p>
+        <div class="org-tags"><span>Akademik</span><span>Riset</span></div>
+      </div>
+      <div class="org-card" data-cat="badan">
+        <div class="org-icon badan"><i class="fas fa-landmark"></i></div>
+        <h3>BEM Universitas</h3>
+        <p>Badan Eksekutif Mahasiswa tingkat universitas — pusat koordinasi seluruh kegiatan kemahasiswaan.</p>
+        <div class="org-tags"><span>Eksekutif</span><span>Advokasi</span></div>
+      </div>
+      <div class="org-card" data-cat="badan">
+        <div class="org-icon badan"><i class="fas fa-gavel"></i></div>
+        <h3>DPM Universitas</h3>
+        <p>Dewan Perwakilan Mahasiswa — fungsi legislatif, mengawasi BEM dan menampung aspirasi mahasiswa.</p>
+        <div class="org-tags"><span>Legislatif</span><span>Aspirasi</span></div>
+      </div>
+      <div class="org-card" data-cat="ukm">
+        <div class="org-icon ukm"><i class="fas fa-futbol"></i></div>
+        <h3>UKM Olahraga</h3>
+        <p>Unit Kegiatan Mahasiswa Olahraga — cabang sepak bola, basket, badminton, renang, dan atletik.</p>
+        <div class="org-tags"><span>Olahraga</span><span>Kesehatan</span></div>
+      </div>
+      <div class="org-card" data-cat="ukm">
+        <div class="org-icon ukm"><i class="fas fa-music"></i></div>
+        <h3>UKM Seni & Musik</h3>
+        <p>Wadah kreativitas di bidang seni: paduan suara, teater, tari tradisional, dan band kampus.</p>
+        <div class="org-tags"><span>Seni</span><span>Budaya</span></div>
+      </div>
+      <div class="org-card" data-cat="ukm">
+        <div class="org-icon ukm"><i class="fas fa-camera"></i></div>
+        <h3>UKM Fotografi</h3>
+        <p>Komunitas fotografi kampus — workshop foto, pameran karya, dan liputan kegiatan universitas.</p>
+        <div class="org-tags"><span>Kreatif</span><span>Dokumentasi</span></div>
+      </div>
+      <div class="org-card" data-cat="ukm">
+        <div class="org-icon ukm"><i class="fas fa-hands-helping"></i></div>
+        <h3>UKM Relawan</h3>
+        <p>Komunitas sosial mahasiswa yang fokus pada kegiatan bakti sosial, donasi, dan pemberdayaan masyarakat.</p>
+        <div class="org-tags"><span>Sosial</span><span>Volunter</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE: FASILITAS ═══════════════════════════════════════════════ -->
+  <section class="page" id="page-fasilitas">
+    <div class="page-header">
+      <h1><i class="fas fa-building"></i> Fasilitas Kampus</h1>
+      <p>Kenali fasilitas yang tersedia untuk mendukung kegiatan belajarmu</p>
+    </div>
+
+    <div class="facility-grid">
+      <div class="facility-card">
+        <div class="facility-img lib"><i class="fas fa-book-reader"></i></div>
+        <div class="facility-info">
+          <h3>Perpustakaan Pusat</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Gedung A, Lantai 1–3</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> Senin–Sabtu, 07:30–21:00</div>
+          <p>Koleksi lebih dari 50.000 buku, jurnal, e-book, ruang diskusi, dan akses database ilmiah internasional.</p>
+          <div class="facility-tags"><span>📚 50.000+ Koleksi</span><span>💻 E-Library</span><span>🗣️ Ruang Diskusi</span></div>
+        </div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-img lab"><i class="fas fa-laptop"></i></div>
+        <div class="facility-info">
+          <h3>Laboratorium Komputer</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Gedung B, Lantai 2</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> Senin–Jumat, 08:00–17:00</div>
+          <p>100 unit komputer dengan spesifikasi tinggi, software pendidikan berlisensi, dan akses internet cepat.</p>
+          <div class="facility-tags"><span>💻 100 Unit PC</span><span>🌐 Internet</span><span>🔒 Berlisensi</span></div>
+        </div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-img sport"><i class="fas fa-dumbbell"></i></div>
+        <div class="facility-info">
+          <h3>Pusat Olahraga (GOR)</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Komplek Olahraga Kampus</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> Setiap Hari, 06:00–22:00</div>
+          <p>GOR serbaguna, lapangan futsal, basket, badminton, kolam renang, dan fitness center mahasiswa.</p>
+          <div class="facility-tags"><span>⚽ Futsal</span><span>🏀 Basket</span><span>🏊 Renang</span></div>
+        </div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-img canteen"><i class="fas fa-utensils"></i></div>
+        <div class="facility-info">
+          <h3>Kantin & Food Court</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Gedung C & Area Terbuka</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> Senin–Sabtu, 07:00–20:00</div>
+          <p>20+ tenant makanan dan minuman, area makan nyaman, harga terjangkau untuk mahasiswa.</p>
+          <div class="facility-tags"><span>🍜 20+ Tenant</span><span>💰 Terjangkau</span><span>🌿 Area Hijau</span></div>
+        </div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-img health"><i class="fas fa-heartbeat"></i></div>
+        <div class="facility-info">
+          <h3>Klinik Kesehatan Mahasiswa</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Gedung Rektorat, Lantai 1</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> Senin–Jumat, 08:00–16:00</div>
+          <p>Layanan kesehatan gratis untuk mahasiswa aktif: konsultasi dokter, obat-obatan dasar, dan rujukan.</p>
+          <div class="facility-tags"><span>🆓 Gratis</span><span>👨‍⚕️ Dokter</span><span>💊 Obat Dasar</span></div>
+        </div>
+      </div>
+
+      <div class="facility-card">
+        <div class="facility-img mosque"><i class="fas fa-mosque"></i></div>
+        <div class="facility-info">
+          <h3>Masjid Kampus</h3>
+          <div class="facility-meta"><i class="fas fa-map-marker-alt"></i> Pusat Kampus</div>
+          <div class="facility-meta"><i class="fas fa-clock"></i> 24 Jam</div>
+          <p>Masjid berkapasitas 1.000 jamaah, fasilitas wudhu, kajian rutin, dan Lembaga Dakwah Kampus.</p>
+          <div class="facility-tags"><span>🕌 1000 Kapasitas</span><span>📖 Kajian</span><span>🤝 LDK</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAGE: PROFIL ══════════════════════════════════════════════════ -->
+  <section class="page" id="page-profil">
+    <div class="page-header">
+      <h1><i class="fas fa-user-circle"></i> Profil Saya</h1>
+      <p>Kelola data diri dan pantau progres onboarding kamu</p>
+    </div>
+
+    <div class="profile-layout">
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <div class="profile-avatar-big">MB</div>
+        <h2 class="profile-name">Mahasiswa Baru</h2>
+        <span class="profile-nim">NIM: 2024001234</span>
+        <div class="profile-badges">
+          <span class="pbadge new">Mahasiswa Baru</span>
+          <span class="pbadge active">Aktif</span>
+        </div>
+        <div class="profile-stats-row">
+          <div class="ps-item"><span class="ps-num">12</span><span class="ps-label">SKS</span></div>
+          <div class="ps-item"><span class="ps-num">3.75</span><span class="ps-label">IP Smt 1</span></div>
+          <div class="ps-item"><span class="ps-num">85%</span><span class="ps-label">Onboarding</span></div>
+        </div>
+      </div>
+
+      <!-- Info & Progress -->
+      <div class="profile-details">
+        <div class="info-section">
+          <h3>Data Akademik</h3>
+          <div class="info-grid">
+            <div class="info-item"><span class="info-label">Fakultas</span><span class="info-val">Teknik</span></div>
+            <div class="info-item"><span class="info-label">Program Studi</span><span class="info-val">Informatika</span></div>
+            <div class="info-item"><span class="info-label">Angkatan</span><span class="info-val">2024</span></div>
+            <div class="info-item"><span class="info-label">Dosen PA</span><span class="info-val">Dr. Budi Santoso</span></div>
+            <div class="info-item"><span class="info-label">Semester</span><span class="info-val">1 (Ganjil 2024/2025)</span></div>
+            <div class="info-item"><span class="info-label">Status</span><span class="info-val green-text">Aktif</span></div>
+          </div>
+        </div>
+
+        <div class="onboarding-progress">
+          <h3>Progres Onboarding</h3>
+          <div class="checklist">
+            <label class="check-item done"><input type="checkbox" checked disabled /><span>Registrasi & Verifikasi Berkas</span></label>
+            <label class="check-item done"><input type="checkbox" checked disabled /><span>Mengikuti PKKMB</span></label>
+            <label class="check-item done"><input type="checkbox" checked disabled /><span>Aktivasi Email & Portal Akademik</span></label>
+            <label class="check-item"><input type="checkbox" id="ck4" /><span>Pengisian KRS Semester 1</span></label>
+            <label class="check-item"><input type="checkbox" id="ck5" /><span>Konsultasi dengan Dosen PA</span></label>
+            <label class="check-item"><input type="checkbox" id="ck6" /><span>Bergabung dengan Organisasi Mahasiswa</span></label>
+            <label class="check-item"><input type="checkbox" id="ck7" /><span>Mengenal Fasilitas Kampus</span></label>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="onboardingBar" style="width:42%"></div>
+          </div>
+          <p class="progress-text" id="progressText">3 dari 7 tugas selesai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
